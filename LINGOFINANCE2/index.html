@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>LingoFinance — Swahili Financial Terms</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ─── TOAST ──────────────────────────────────────────────────────────────── -->
+<div class="toast" id="toast"></div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     AUTHENTICATION SECTION
+     Shown on startup if no active session found in localStorage.
+     Logic handled in app.js — do not add inline JS here.
+══════════════════════════════════════════════════════════════════════════ -->
+<div id="auth-screen" class="auth-screen" style="display:none;">
+
+  <!-- Background glow decoration -->
+  <div class="auth-bg-glow"></div>
+
+  <div class="auth-card">
+
+    <!-- App branding -->
+    <div class="auth-logo">Lingo<span>Finance</span></div>
+    <p class="auth-tagline">Your bilingual financial education companion 🇹🇿</p>
+
+    <!-- Tab switcher: Create Account / Sign In -->
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tab-signup" onclick="switchAuthTab('signup')">
+        Create Account
+      </button>
+      <button class="auth-tab" id="tab-signin" onclick="switchAuthTab('signin')">
+        Sign In
+      </button>
+    </div>
+
+    <!-- ── CREATE ACCOUNT FORM ────────────────────────────────────────────── -->
+    <div id="form-signup">
+      <div class="auth-field">
+        <label for="signup-name">Full Name</label>
+        <input
+          type="text"
+          id="signup-name"
+          placeholder="e.g. Amina Juma"
+          autocomplete="name"
+        />
+      </div>
+      <div class="auth-field">
+        <label for="signup-email">Email Address</label>
+        <input
+          type="email"
+          id="signup-email"
+          placeholder="you@example.com"
+          autocomplete="email"
+        />
+      </div>
+      <div class="auth-field">
+        <label for="signup-password">Password</label>
+        <input
+          type="password"
+          id="signup-password"
+          placeholder="At least 6 characters"
+          autocomplete="new-password"
+        />
+      </div>
+      <div class="auth-field">
+        <label for="signup-confirm">Confirm Password</label>
+        <input
+          type="password"
+          id="signup-confirm"
+          placeholder="Repeat your password"
+          autocomplete="new-password"
+        />
+      </div>
+      <!-- Validation error message -->
+      <div class="auth-error" id="signup-error"></div>
+      <button class="auth-btn" onclick="handleSignUp()">Create Account →</button>
+    </div>
+
+    <!-- ── SIGN IN FORM ───────────────────────────────────────────────────── -->
+    <div id="form-signin" style="display:none;">
+      <div class="auth-field">
+        <label for="signin-email">Email Address</label>
+        <input
+          type="email"
+          id="signin-email"
+          placeholder="you@example.com"
+          autocomplete="email"
+        />
+      </div>
+      <div class="auth-field">
+        <label for="signin-password">Password</label>
+        <input
+          type="password"
+          id="signin-password"
+          placeholder="Your password"
+          autocomplete="current-password"
+        />
+      </div>
+      <!-- Validation error message -->
+      <div class="auth-error" id="signin-error"></div>
+      <button class="auth-btn" onclick="handleSignIn()">Sign In →</button>
+    </div>
+
+    <p class="auth-footer">Made for Tanzania 🇹🇿 · LingoFinance v2.0</p>
+
+  </div><!-- end .auth-card -->
+</div><!-- end #auth-screen -->
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     MAIN APP SHELL
+     Hidden on startup until authentication is confirmed.
+     Revealed by app.js after successful login or session restore.
+══════════════════════════════════════════════════════════════════════════ -->
+<div id="app-shell" style="display:none;">
+
+  <!-- ─── SIDEBAR OVERLAY ──────────────────────────────────────────────────── -->
+  <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
+
+  <!-- ─── SIDEBAR ─────────────────────────────────────────────────────────── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-logo">Lingo<span>Finance</span></span>
+      <button class="sidebar-close" onclick="closeSidebar()">✕</button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <!-- Home -->
+      <a href="#" data-page="home" class="active">
+        <span class="nav-icon">🏠</span> Home
+      </a>
+
+      <!-- Saved Terms -->
+      <a href="#" data-page="saved">
+        <span class="nav-icon">🔖</span> Saved Terms
+      </a>
+
+      <!-- Explore More -->
+      <a href="#" data-page="explore">
+        <span class="nav-icon">🔎</span> Explore More
+      </a>
+
+      <!-- ── AI ASSISTANT — new page ──────────────────────────────────────── -->
+      <a href="#" data-page="ai-assistant">
+        <span class="nav-icon">🤖</span> AI Assistant
+      </a>
+
+      <!-- Help -->
+      <a href="#" data-page="help">
+        <span class="nav-icon">❓</span> Help
+      </a>
+
+      <!-- Account -->
+      <a href="#" data-page="account">
+        <span class="nav-icon">👤</span> Account
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <!-- Sign out — logic handled in app.js -->
+      <button class="logout-btn" onclick="handleLogout()">🚪 Sign Out</button>
+      <p style="margin-top:8px;font-size:11px;">LingoFinance v2.0 · Made for Tanzania 🇹🇿</p>
+    </div>
+  </aside>
+
+  <!-- ─── NAVBAR ───────────────────────────────────────────────────────────── -->
+  <nav class="navbar">
+    <!-- LEFT: Hamburger + Clock/History -->
+    <div class="nav-left" style="position:relative;">
+      <button class="hamburger" onclick="openSidebar()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <button class="history-btn" onclick="toggleHistory()" aria-label="Search History">🕐</button>
+      <!-- History Dropdown -->
+      <div class="history-dropdown" id="history-dropdown"></div>
+    </div>
+
+    <!-- CENTER: App title -->
+    <div class="nav-title">Lingo<span>Finance</span></div>
+
+    <!-- RIGHT: Language Flip Card -->
+    <div class="flip-card" id="lang-toggle" onclick="toggleLanguage()" title="Switch Language">
+      <div class="flip-card-inner">
+        <div class="flip-front">EN</div>
+        <div class="flip-back">SW</div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       EXISTING PAGES SECTION
+       All original pages preserved exactly as they were.
+       Content rendered dynamically by app.js.
+  ════════════════════════════════════════════════════════════════════════ -->
+
+  <!-- HOME -->
+  <div class="page active" id="page-home"></div>
+
+  <!-- TRANSLATION -->
+  <div class="page" id="page-translation"></div>
+
+  <!-- SAVED TERMS -->
+  <div class="page" id="page-saved"></div>
+
+  <!-- EXPLORE MORE -->
+  <div class="page" id="page-explore"></div>
+
+  <!-- EXPLORE DETAIL -->
+  <div class="page" id="page-explore-detail"></div>
+
+  <!-- HELP -->
+  <div class="page" id="page-help"></div>
+
+  <!-- ACCOUNT -->
+  <div class="page" id="page-account"></div>
+
+  <!-- CATEGORY -->
+  <div class="page" id="page-category"></div>
+
+  <!-- ── AI ASSISTANT PAGE — new ────────────────────────────────────────── -->
+  <!--
+    AI ASSISTANT SECTION
+    Rendered dynamically by app.js renderAssistant() function.
+    Finance-only chatbot powered by Groq AI.
+    Non-finance queries are blocked before reaching the API.
+  -->
+  <div class="page" id="page-ai-assistant"></div>
+
+</div><!-- end #app-shell -->
+
+<!-- ─── SCRIPTS ──────────────────────────────────────────────────────────────
+     Load order matters:
+     1. config.js  — API key configuration (keep out of public repos)
+     2. data.js    — TERMS and CATEGORIES arrays
+     3. app.js     — All application logic
+─────────────────────────────────────────────────────────────────────────── -->
+<script src="config.js"></script>
+<script src="data.js?v=99"></script>
+<script src="app.js?v=99"></script>
+</body>
+</html>
