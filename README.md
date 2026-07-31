@@ -1,7 +1,75 @@
 # Swahili-Financial-Terms-Explainer-App
-AI powered bilingual financial literacy application for Swahili and English
+# 💰 LingoFinance
 
-Financial literacy remains a significant challenge in Tanzania, where many citizens struggle to understand fundamental economic and financial concepts because of language barriers, as most educational and institutional materials are presented in English or in overly technical terms (FinScope Tanzania, 2023). This project was undertaken as a course-based application of artificial intelligence to real-world problem-solving, addressing this gap through the development of a bilingual English–Swahili Financial Terms Explainer application called LingoFinance.
-The primary objective of the project was to make financial and economic concepts such as inflation, interest rates, mobile money, and credit scoring accessible and understandable to everyday Tanzanian citizens, in line with Tanzania’s National Financial Inclusion Framework Bank of Tanzania (2023). To achieve this, the project team compiled a comprehensive glossary of close to three hundred financial terms, drawing on authoritative references including the Bank of Tanzania (BoT), NMB Bank, and FinScope Tanzania (2023). Each term was translated and simplified into plain, accessible Swahili to ensure clarity for non-specialist users. A searchable bilingual application interface was then developed and deployed, allowing users to browse and search terms across categories such as banking, payments, and macroeconomics. For terms outside the curated dataset, the application integrates the Groq AI large language model to generate real-time, context-aware explanations, Groq (2026).
-The completed application was tested by the project team in collaboration with the supervisors, who are native Tanzanian Swahili speakers, to verify the accuracy, clarity, and functionality of the translated definitions and overall system performance, International Software Testing Qualifications Board (2018). Testing confirmed that the application functions as intended, successfully delivering simplified bilingual financial explanations in an accessible, user-friendly format. Overall, this project demonstrates the practical application of fundamental artificial intelligence and software development concepts in addressing a genuine socio-economic challenge, while contributing to the advancement of local-language digital resources in support of financial inclusion in Tanzania.
+> **AI-Powered Bilingual Financial Dictionary and Education Platform for English and Swahili**
+
+LingoFinance is an AI-powered web application designed to improve **financial literacy in Tanzania** by making financial concepts easy to understand in both **English and Swahili**.
+
+The application combines a curated financial dictionary with artificial intelligence to provide clear explanations of financial terms, helping students, entrepreneurs, professionals, and the general public understand complex financial concepts using simple language.
+
+🌐 **Live Demo:** https://lingofinance.netlify.app
+
+---
+
+## ✨ Key Features
+
+- 📚 Bilingual financial dictionary (English ↔ Swahili)
+- 🤖 AI-powered financial assistant
+- 🔍 Smart search with AI fallback for unknown financial terms
+- 📂 Browse terms by financial category
+- ⭐ Save favorite financial terms
+- 🕒 Search history
+- 🔐 Google Sign-In
+- 📱 Responsive design for desktop and mobile
+- 🎯 Beginner-friendly financial explanations
+- 🇹🇿 Designed specifically for Tanzanian users
+
+---
+
+## 🚀 Why LingoFinance?
+
+Financial education resources are often written in technical English, making them difficult for many people to understand.
+
+LingoFinance bridges this gap by translating and explaining financial terminology into clear and accessible Swahili while preserving the original English terminology. When a financial term is not available in the built-in dictionary, the application uses AI to generate an explanation in real time.
+
+The project aims to support financial inclusion and improve access to financial knowledge for students, entrepreneurs, and everyday citizens.
+
+---
+
+## 🛠️ Technologies Used
+
+| Technology | Purpose |
+|------------|---------|
+| HTML5 | Application structure |
+| CSS3 | User interface and responsive design |
+| JavaScript (ES6+) | Application logic |
+| Groq AI API | AI-powered financial explanations |
+| Netlify | Hosting and deployment |
+| Netlify Functions | Secure backend for AI requests |
+| Google Identity Services | User authentication |
+| Local Storage | Favorites, search history, and user preferences |
+
+---
+## 🤖 AI Features
+
+LingoFinance integrates **Groq AI** to provide intelligent financial assistance.
+
+### AI Assistant
+- Answers finance-related questions.
+- Provides simple explanations suitable for beginners.
+- Supports English and Swahili conversations.
+- Responds only to financial topics.
+
+### Smart Search
+If a searched financial term is not found in the built-in dictionary, the application automatically queries the AI to generate:
+
+- English definition
+- Swahili definition
+- English example
+- Swahili example
+- Appropriate financial category
+
+This ensures users can learn about both common and newly emerging financial concepts.
+
+---
  
