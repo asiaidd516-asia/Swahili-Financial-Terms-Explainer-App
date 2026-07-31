@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
   <title>LingoFinance — Swahili Financial Terms</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -24,6 +26,29 @@
   <div class="auth-card">
 
     <!-- App branding -->
+    <div class="auth-logo-mark">
+      <svg viewBox="0 0 64 64" width="60" height="60">
+        <defs>
+          <linearGradient id="authLogoGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%"  stop-color="#8B5CF6"/>
+            <stop offset="30%" stop-color="#7C3AED"/>
+            <stop offset="65%" stop-color="#4C1D95"/>
+            <stop offset="100%" stop-color="#150C22"/>
+          </linearGradient>
+          <linearGradient id="authLogoSheen" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"  stop-color="#FFFFFF" stop-opacity="0.24"/>
+            <stop offset="45%" stop-color="#FFFFFF" stop-opacity="0"/>
+          </linearGradient>
+          <clipPath id="authLogoClip"><rect width="64" height="64" rx="16"/></clipPath>
+        </defs>
+        <g clip-path="url(#authLogoClip)">
+          <rect width="64" height="64" fill="url(#authLogoGrad)"/>
+          <rect width="64" height="64" fill="url(#authLogoSheen)"/>
+        </g>
+        <rect x="1.25" y="1.25" width="61.5" height="61.5" rx="14.75" fill="none" stroke="#FFFFFF" stroke-opacity="0.28" stroke-width="1.5"/>
+        <text x="32" y="42" font-family="Georgia, 'Playfair Display', serif" font-size="30" font-weight="700" font-style="italic" fill="#C4B5FD" text-anchor="middle">Lf</text>
+      </svg>
+    </div>
     <div class="auth-logo">Lingo<span>Finance</span></div>
     <p class="auth-tagline">Your bilingual financial education companion 🇹🇿</p>
 
@@ -39,6 +64,20 @@
 
     <!-- ── CREATE ACCOUNT FORM ────────────────────────────────────────────── -->
     <div id="form-signup">
+      <div class="google-btn-wrap">
+        <button type="button" class="google-btn" onclick="handleGoogleContinue()">
+          <svg viewBox="0 0 18 18" width="18" height="18">
+            <path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.91c1.7-1.57 2.69-3.88 2.69-6.62z"/>
+            <path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.91-2.26c-.81.54-1.84.86-3.05.86-2.34 0-4.33-1.58-5.04-3.71H.96v2.33A9 9 0 0 0 9 18z"/>
+            <path fill="#FBBC05" d="M3.96 10.71A5.4 5.4 0 0 1 3.68 9c0-.59.1-1.17.28-1.71V4.96H.96A9 9 0 0 0 0 9c0 1.45.35 2.83.96 4.04l3-2.33z"/>
+            <path fill="#EA4335" d="M9 3.58c1.32 0 2.51.46 3.44 1.35l2.58-2.58C13.46.89 11.43 0 9 0A9 9 0 0 0 .96 4.96l3 2.33C4.67 5.16 6.66 3.58 9 3.58z"/>
+          </svg>
+          Continue with Google
+        </button>
+        <!-- Google's real button renders here, invisibly, on top — see initGoogleButtons() in app.js -->
+        <div id="gbtn-signup" class="google-btn-real"></div>
+      </div>
+      <div class="auth-divider"><span>or</span></div>
       <div class="auth-field">
         <label for="signup-name">Full Name</label>
         <input
@@ -82,6 +121,20 @@
 
     <!-- ── SIGN IN FORM ───────────────────────────────────────────────────── -->
     <div id="form-signin" style="display:none;">
+      <div class="google-btn-wrap">
+        <button type="button" class="google-btn" onclick="handleGoogleContinue()">
+          <svg viewBox="0 0 18 18" width="18" height="18">
+            <path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.91c1.7-1.57 2.69-3.88 2.69-6.62z"/>
+            <path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.91-2.26c-.81.54-1.84.86-3.05.86-2.34 0-4.33-1.58-5.04-3.71H.96v2.33A9 9 0 0 0 9 18z"/>
+            <path fill="#FBBC05" d="M3.96 10.71A5.4 5.4 0 0 1 3.68 9c0-.59.1-1.17.28-1.71V4.96H.96A9 9 0 0 0 0 9c0 1.45.35 2.83.96 4.04l3-2.33z"/>
+            <path fill="#EA4335" d="M9 3.58c1.32 0 2.51.46 3.44 1.35l2.58-2.58C13.46.89 11.43 0 9 0A9 9 0 0 0 .96 4.96l3 2.33C4.67 5.16 6.66 3.58 9 3.58z"/>
+          </svg>
+          Continue with Google
+        </button>
+        <!-- Google's real button renders here, invisibly, on top — see initGoogleButtons() in app.js -->
+        <div id="gbtn-signin" class="google-btn-real"></div>
+      </div>
+      <div class="auth-divider"><span>or</span></div>
       <div class="auth-field">
         <label for="signin-email">Email Address</label>
         <input
@@ -100,9 +153,53 @@
           autocomplete="current-password"
         />
       </div>
+      <p class="auth-forgot-link">
+        <a href="#" onclick="showForgotPassword(); return false;">Forgot password?</a>
+      </p>
       <!-- Validation error message -->
       <div class="auth-error" id="signin-error"></div>
       <button class="auth-btn" onclick="handleSignIn()">Sign In →</button>
+    </div>
+
+    <!-- ── FORGOT PASSWORD FORM ───────────────────────────────────────────── -->
+    <div id="form-forgot" style="display:none;">
+      <p class="auth-tagline" style="margin-bottom:18px;">
+        Enter your email and choose a new password.
+      </p>
+      <div class="auth-field">
+        <label for="forgot-email">Email Address</label>
+        <input
+          type="email"
+          id="forgot-email"
+          placeholder="you@example.com"
+          autocomplete="email"
+        />
+      </div>
+      <div class="auth-field">
+        <label for="forgot-password">New Password</label>
+        <input
+          type="password"
+          id="forgot-password"
+          placeholder="At least 6 characters"
+          autocomplete="new-password"
+        />
+      </div>
+      <div class="auth-field">
+        <label for="forgot-confirm">Confirm New Password</label>
+        <input
+          type="password"
+          id="forgot-confirm"
+          placeholder="Repeat your new password"
+          autocomplete="new-password"
+        />
+      </div>
+      <!-- Validation / success message -->
+      <div class="auth-error" id="forgot-error"></div>
+      <div class="auth-success" id="forgot-success"></div>
+      <button class="auth-btn" onclick="handleForgotPassword()">Reset Password →</button>
+      <p class="auth-forgot-link" style="margin-top:14px;">
+        <a href="#" onclick="backToSignIn(); return false;">← Back to Sign In</a>
+      </p>
     </div>
 
     <p class="auth-footer">Made for Tanzania 🇹🇿 · LingoFinance v2.0</p>
@@ -130,38 +227,40 @@
     <nav class="sidebar-nav">
       <!-- Home -->
       <a href="#" data-page="home" class="active">
-        <span class="nav-icon">🏠</span> Home
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9a1 1 0 0 0 1 1H9a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h2.5a1 1 0 0 0 1-1v-9"/></svg></span> Home
       </a>
 
       <!-- Saved Terms -->
       <a href="#" data-page="saved">
-        <span class="nav-icon">🔖</span> Saved Terms
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h12a1 1 0 0 1 1 1V21l-7-4.2L5 21V4.5a1 1 0 0 1 1-1Z"/></svg></span> Saved Terms
       </a>
 
       <!-- Explore More -->
       <a href="#" data-page="explore">
-        <span class="nav-icon">🔎</span> Explore More
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span> Explore More
       </a>
 
       <!-- ── AI ASSISTANT — new page ──────────────────────────────────────── -->
       <a href="#" data-page="ai-assistant">
-        <span class="nav-icon">🤖</span> AI Assistant
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4"/><circle cx="12" cy="3" r="1.2" fill="currentColor" stroke="none"/><circle cx="9" cy="14" r="1.3" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1.3" fill="currentColor" stroke="none"/><path d="M2 13v3M22 13v3"/></svg></span> AI Assistant
       </a>
 
       <!-- Help -->
       <a href="#" data-page="help">
-        <span class="nav-icon">❓</span> Help
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.3 9.3a2.7 2.7 0 1 1 3.9 2.4c-.8.5-1.2 1-1.2 2"/><path d="M12 17h.01"/></svg></span> Help
       </a>
 
       <!-- Account -->
       <a href="#" data-page="account">
-        <span class="nav-icon">👤</span> Account
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.6 3.1-6.5 7-6.5s7 2.9 7 6.5"/></svg></span> Account
       </a>
     </nav>
 
     <div class="sidebar-footer">
       <!-- Sign out — logic handled in app.js -->
-      <button class="logout-btn" onclick="handleLogout()">🚪 Sign Out</button>
+      <button class="logout-btn" onclick="handleLogout()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;vertical-align:-2px;margin-right:5px;"><path d="M9 21H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>Sign Out
+      </button>
       <p style="margin-top:8px;font-size:11px;">LingoFinance v2.0 · Made for Tanzania 🇹🇿</p>
     </div>
   </aside>
@@ -173,7 +272,9 @@
       <button class="hamburger" onclick="openSidebar()" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
-      <button class="history-btn" onclick="toggleHistory()" aria-label="Search History">🕐</button>
+      <button class="history-btn" onclick="toggleHistory()" aria-label="Search History">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+      </button>
       <!-- History Dropdown -->
       <div class="history-dropdown" id="history-dropdown"></div>
     </div>
@@ -237,6 +338,7 @@
      2. data.js    — TERMS and CATEGORIES arrays
      3. app.js     — All application logic
 ─────────────────────────────────────────────────────────────────────────── -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 <script src="config.js"></script>
 <script src="data.js?v=99"></script>
 <script src="app.js?v=99"></script>
