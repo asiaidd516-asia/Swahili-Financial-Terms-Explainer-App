@@ -85,20 +85,20 @@ This ensures users can learn about both common and newly emerging financial conc
 
 ### 🏠 Home Page
 
-![Home](Screenshots/home.png)
+![Home](Screenshots/home.png.png)
 
 ### 🤖 AI Assistant
 
-![AI Assistant](Screenshots/ai-chat.png)
+![AI Assistant](Screenshots/ai-chat.png.png)
 
 
 ### 🌐 Translation
 
-![Translation](Screenshots/translation.png)
+![Translation](Screenshots/translation.png.png)
 
 ### 📂 Explore Finance
 
-![Explore-more](Screenshots/explore-more.png)
+![Explore-more](Screenshots/explore-more.png.png)
 
 ---
  
