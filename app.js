@@ -1169,12 +1169,11 @@ Respond ONLY with valid JSON, no markdown, no extra text. Keep each text field u
   "didYouKnow": { "fact": "two sentences in English about ${randomDyk}", "factSw": "two sentences in Swahili" }
 }`;
 
-  const response = await fetch(GROQ_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${GROQ_API_KEY}`
-    },
+  const response = await fetch("/.netlify/functions/groq", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
     body: JSON.stringify({
       model: GROQ_MODEL,
       messages: [
@@ -1785,14 +1784,8 @@ async function sendAIMessage() {
   // Render user bubble
   _appendAIBubble("user", msg);
 
-  //  API availability check 
-  if (!GROQ_API_KEY) {
-    _appendAIBubble("ai", t(
-      "⚙️ AI assistant unavailable. Please add your API key to config.js.",
-      "⚙️ Msaidizi wa AI haupatikani. Tafadhali ongeza ufunguo wako wa API kwenye config.js."
-    ));
-    return;
-  }
+  
+  
 
   // Disable send while waiting
   const sendBtn = document.querySelector("#page-ai-assistant button[onclick=\"sendAIMessage()\"]");
@@ -1845,11 +1838,10 @@ STRICT RULES:
       requestBody.tool_choice = "required";
     }
 
-    const response = await fetch(GROQ_URL, {
+    const response = await fetch("/.netlify/functions/groq", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${GROQ_API_KEY}`
       },
       body: JSON.stringify(requestBody)
     });
