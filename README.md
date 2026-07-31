@@ -78,4 +78,27 @@ If a searched financial term is not found in the built-in dictionary, the applic
 This ensures users can learn about both common and newly emerging financial concepts.
 
 ---
+
+---
+
+## 📸 Screenshots
+
+### 🏠 Home Page
+
+![Home](screenshots/home.png)
+
+### 🤖 AI Assistant
+
+![AI Assistant](screenshots/ai-chat.png)
+
+
+### 🌐 Translation
+
+![Translation](screenshots/translation.png)
+
+### 📂 Categories
+
+![Categories](screenshots/explore-more.png)
+
+---
  
