@@ -98,7 +98,7 @@ This ensures users can learn about both common and newly emerging financial conc
 
 ### 📂 Explore Finance
 
-![Categories](Screenshots/explore-more.png)
+![Explore-more](Screenshots/explore-more.png)
 
 ---
  
