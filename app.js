@@ -1835,7 +1835,6 @@ STRICT RULES:
     // to the model's own judgment about whether one is needed.
     if (usingCompound) {
       requestBody.compound_custom = { tools: { enabled_tools: ["web_search"] } };
-      requestBody.tool_choice = "required";
     }
 
     const response = await fetch("/.netlify/functions/groq", {
@@ -1846,7 +1845,11 @@ STRICT RULES:
       body: JSON.stringify(requestBody)
     });
 
-    if (!response.ok) throw new Error("API error " + response.status);
+    if (!response.ok) {
+      const errBody = await response.json().catch(() => ({}));
+      console.error("AI assistant error body:", errBody);
+      throw new Error("API error " + response.status);
+    }
 
     const data  = await response.json();
     const reply = data.choices[0].message.content.trim();
