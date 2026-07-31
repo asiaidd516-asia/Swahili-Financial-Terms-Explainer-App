@@ -5,8 +5,7 @@ const TERM_OF_DAY = TERMS[new Date().getDate() % TERMS.length];
 
 // ─── GROQ AI CONFIG ──────────────────────────────────────────────────────────
 // 🔑 PASTE YOUR GROQ API KEY BELOW (replace the text inside the quotes)
-const GROQ_API_KEY = "YOUR_GROQ_API_KEY_HERE"; // <-- REPLACE THIS WITH YOUR GROQ API KEY
-const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
+
 const GROQ_MODEL = "llama-3.3-70b-versatile";
 
 // ─── GOOGLE SIGN-IN CONFIG ───────────────────────────────────────────────────
@@ -175,11 +174,10 @@ IMPORTANT — branded products that look like ordinary words: Many real Tanzania
 
 You have access to real-time web search. If the query is or could be the name of a specific branded financial product, service, or company, and you are not fully certain of its exact mechanics (who offers it, how it works, loan terms, etc.), SEARCH THE WEB to verify the real facts before writing the JSON — do not guess or assume it works like a similar-sounding product. Base the definition on what you actually find.`;
 
-  const response = await fetch(GROQ_URL, {
+  const response = await fetch("/.netlify/functions/groq", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${GROQ_API_KEY}`
+      "Content-Type": "application/json"
     },
     body: JSON.stringify({
       model: GROQ_COMPOUND_MODEL,
