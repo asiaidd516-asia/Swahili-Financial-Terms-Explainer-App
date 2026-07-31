@@ -1,3 +1,9 @@
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow?logo=javascript)
+![Netlify](https://img.shields.io/badge/Hosted%20on-Netlify-00C7B7?logo=netlify)
+![AI Powered](https://img.shields.io/badge/AI-Groq-blueviolet)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Status-Active-success)
+
 # Swahili-Financial-Terms-Explainer-App
 # 💰 LingoFinance
 
